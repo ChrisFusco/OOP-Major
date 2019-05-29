@@ -185,6 +185,9 @@ void GameSystem::printGameSelection() {
  * will be easier for you to understand.
  */
 void GameSystem::doTick() {
+	// Checks to see if the game selection needs to be printed
+	bool printSelection = true;
+
 	// If a game is currently loaded,
 	if (getLoadedGame()) {
 
@@ -206,8 +209,12 @@ void GameSystem::doTick() {
 
 	// Else, since no game is loaded, print and wait for input.
 	else {
+
 		// Prints the game selection
-		printGameSelection();
+		if (printSelection) {
+			printGameSelection();
+			printSelection = false;
+		}
 
 		// Continue asking for input until a valid input is given.
 		while (true) {
@@ -219,8 +226,8 @@ void GameSystem::doTick() {
 			// Check if the input is a command, if so, execute it.
 			Command* cmd = commandSystem->parseCommand(input);
 			if (cmd) {
-				cmd->execute();
 				log(("Executing command \"" + cmd->getArg() + "\"..."), true);
+				cmd->execute();
 				break;
 			}
 
@@ -233,6 +240,7 @@ void GameSystem::doTick() {
 				if (num >= 0 && num < registeredGames.size()) {
 					loadedGame = registeredGames[num];
 					log(("Selected " + getLoadedGame()->getName() + "."), true);
+					printSelection = true;
 					break;
 				}
 			}

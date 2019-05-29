@@ -4,6 +4,7 @@
 #include "GameSystem.h"
 #include "TicTacToeGame.h"
 #include "StopCommand.h"
+#include "HelpCommand.h"
 
 using namespace std;
 
@@ -12,7 +13,7 @@ GameSystem gameSystem("Dollar-Store GameCube", "1.0.0");
 int main() {
 
 	Game** games = new Game*[1];
-	Command** commands = new Command*[1];
+	Command** commands = new Command*[2];
 	
 
 	gameSystem.log(("Loading version " + gameSystem.getVersion() + "."), true);
@@ -37,11 +38,23 @@ int main() {
 	gameSystem.getCommandSystem()->registerCommand(stopCommand);
 
 
+
+	// Registers the help command
+	Command* helpCommand = new HelpCommand("help");
+	gameSystem.getCommandSystem()->registerCommand(helpCommand);
+
+	// Stores commands in dynamic array
+	*commands = stopCommand;
+	*(commands+1) = helpCommand;
+
+
 	gameSystem.log("Finished preparation.", true);
 	gameSystem.log("Initiating system.", true);
 
 
 	// Initialises the GameSystem
+
+	gameSystem.log("Use \"!help\" for... help.", true);
 
 	gameSystem.init();
 

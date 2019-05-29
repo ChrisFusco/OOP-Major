@@ -130,6 +130,9 @@ void TicTacToeGame::cleanup() {
  */
 void TicTacToeGame::doTick() {
 
+	// Checks to see if the board needs to be printed
+	bool printBoard = true;
+
 	// This will always work since the board is set in constructor and is private
 	TicTacToeBoard* board = dynamic_cast<TicTacToeBoard*>(getBoard());
 
@@ -137,7 +140,10 @@ void TicTacToeGame::doTick() {
 	if (TicTacToePlayer* player = dynamic_cast<TicTacToePlayer*>(tracker.peek())) {
 		if (!dynamic_cast<TicTacToePlayerAI*>(tracker.peek())) {
 			// Prints the board
-			board->print();
+			if (printBoard) {
+				board->print();
+				printBoard = false;
+			}
 		}
 	}
 
@@ -172,8 +178,8 @@ void TicTacToeGame::doTick() {
 				Command* cmd = gameSystem.getCommandSystem()->parseCommand(input);
 
 				if (cmd) {
-					cmd->execute();
 					log(("Executing command \"" + cmd->getArg() + "\"..."), true);
+					cmd->execute();
 					break;
 				}
 				else {
@@ -203,6 +209,7 @@ void TicTacToeGame::doTick() {
 						// Handles the move
 						gameboard->getTiles()[num]->setState(std::string(1, player->getMarker()));
 						tracker.poll();
+						printBoard = true;
 						break;
 					}
 					else {
