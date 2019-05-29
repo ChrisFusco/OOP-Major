@@ -19,6 +19,7 @@ StopCommand::StopCommand(std::string arg) : Command(arg) { }
 void StopCommand::execute() {
 	if (gameSystem.getLoadedGame()) {
 		if (gameSystem.getLoadedGame()->isRunning()) {
+			gameSystem.getLoadedGame()->cleanup();
 			gameSystem.getLoadedGame()->stop();
 		}
 	}

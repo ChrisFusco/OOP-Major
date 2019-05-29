@@ -160,7 +160,7 @@ void TicTacToeGame::doTick() {
 			if (TicTacToePlayer* player = dynamic_cast<TicTacToePlayer*>(tracker.peek())) {
 				if (!dynamic_cast<TicTacToePlayerAI*>(tracker.peek())) {
 					// Tells player to make their move
-					log(("Select your move (" + player->getName() + "): "), false);
+					log(("Select your move, " + player->getName() + " (" + player->getMarker() + "): "), false);
 				}
 
 				// Gets the move
@@ -207,6 +207,7 @@ void TicTacToeGame::doTick() {
 					}
 					else {
 						log("That move has already been made.", true);
+						continue;
 					}
 				}
 			}
@@ -237,6 +238,7 @@ void TicTacToeGame::handleEnd() {
 		for (Player* loser : players) {
 			if (loser->getName() != winner->getName()) {
 				loser->addLoss();
+				loser->resetWinstreak();
 			}
 		}
 	}
@@ -251,6 +253,25 @@ void TicTacToeGame::handleEnd() {
 	}
 
 	while (true) {
+		log("Print stats? [Y/N]: ", false);
+		std::string displayStats;
+		std::cin >> displayStats;
+
+		if (displayStats[0] == 'Y' || displayStats[0] == 'y') {
+			// Prints stats
+			for (Player* player : players) {
+				std::cout << std::endl;
+				player->printDisplay();
+			}
+			std::cout << std::endl;
+			break;
+		}
+		else if (displayStats[0] == 'N' || displayStats[0] == 'n') {
+			break;
+		}
+	}
+
+	while (true) {
 		log("Would you like a rematch? [Y/N]: ", false);
 		std::string input;
 		std::cin >> input;
@@ -260,6 +281,7 @@ void TicTacToeGame::handleEnd() {
 			break;
 		}
 		else if (input[0] == 'N' || input[0] == 'n') {
+			cleanup();
 			stop();
 			break;
 		}

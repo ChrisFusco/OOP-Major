@@ -5,6 +5,10 @@
  */
 Player::Player(std::string name) {
 	this->name = name;
+	wins = 0;
+	draws = 0;
+	losses = 0;
+	winstreak = 0;
 }
 
 /**

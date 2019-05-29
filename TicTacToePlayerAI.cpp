@@ -16,7 +16,7 @@ TicTacToePlayerAI::TicTacToePlayerAI(std::string name, char marker) : TicTacToeP
  * Prints the display.
  */
 void TicTacToePlayerAI::printDisplay() {
-	std::cout << "=========={}==========" << std::endl;;
+    std::cout << "=========={}==========" << std::endl;;
     std::cout << "Name: " << getName() << std::endl;
     std::cout << "Marker: " << getMarker() << std::endl;
     std::cout << "Type: AI" << std::endl;
@@ -32,27 +32,29 @@ void TicTacToePlayerAI::printDisplay() {
  * 
  * A game should always be loaded when this function is called.
  * 
- * TODO
+ * > How does it work?
+ * 
+ * Returns a random empty tile.
  */
 std::string TicTacToePlayerAI::getMove() {
 
-    // Holds the ratings for the tiles
-    int* ratings = new int[9]{NULL};
-
+    std::vector<Tile*> emptyTiles;
 
     for (int i = 0; i < 9; i++) {
         Tile* tile = gameSystem.getLoadedGame()->getBoard()->getTiles()[i];
 
-        // If true the tile is a possible move
+        // If true the tile is empty
         if (Utils::isInteger(tile->getState())) {
 
-            // If the number is 1-3,
-
-
-            return tile->getState();
+            emptyTiles.push_back(tile);
         }
-
     }
 
+    if (!emptyTiles.empty()) {
+        // Returns the empty tile at a random index
+        return (emptyTiles[(rand() % emptyTiles.size())]->getState());
+    }
+
+    // Returns error
     return "Error";
 }
