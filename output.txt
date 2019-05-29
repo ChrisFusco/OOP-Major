@@ -1,0 +1,86 @@
+[Dollar-Store GameCube] Loading version 1.0.0.
+[Dollar-Store GameCube] Entering preparation stage.
+[Dollar-Store GameCube] Registered Game: Tic Tac Toe
+[Dollar-Store GameCube] Finished preparation.
+[Dollar-Store GameCube] Initiating system.
+
+[Dollar-Store GameCube] Game Selection:
+[Dollar-Store GameCube] 0. Tic Tac Toe | Version: 1.0.0
+
+[Dollar-Store GameCube] Select a game: 
+[Dollar-Store GameCube] Selected Tic Tac Toe.
+[Tic Tac Toe] [S]ingleplayer/[M]ultiplayer: 
+[Tic Tac Toe] Enter username (Player 2): 
+[Tic Tac Toe] Enter username (Player): 
+ ___ ___ ___
+| 0 | 1 | 2 |
+|___|___|___|
+| 3 | 4 | 5 |
+|___|___|___|
+| 6 | 7 | 8 |
+|___|___|___|
+
+[Tic Tac Toe] Select your move (c): 
+ ___ ___ ___
+| O | 1 | 2 |
+|___|___|___|
+| 3 | 4 | 5 |
+|___|___|___|
+| 6 | 7 | 8 |
+|___|___|___|
+
+[Tic Tac Toe] Select your move (m): 
+ ___ ___ ___
+| O | 1 | 2 |
+|___|___|___|
+| X | 4 | 5 |
+|___|___|___|
+| 6 | 7 | 8 |
+|___|___|___|
+
+[Tic Tac Toe] Select your move (c): 
+ ___ ___ ___
+| O | O | 2 |
+|___|___|___|
+| X | 4 | 5 |
+|___|___|___|
+| 6 | 7 | 8 |
+|___|___|___|
+
+[Tic Tac Toe] Select your move (m): 
+ ___ ___ ___
+| O | O | 2 |
+|___|___|___|
+| X | X | 5 |
+|___|___|___|
+| 6 | 7 | 8 |
+|___|___|___|
+
+[Tic Tac Toe] Select your move (c): 
+[Tic Tac Toe] Invalid input.
+[Tic Tac Toe] Select your move (c): 
+ ___ ___ ___
+| O | O | O |
+|___|___|___|
+| X | X | 5 |
+|___|___|___|
+| 6 | 7 | 8 |
+|___|___|___|
+
+[Tic Tac Toe] The winner is: c
+[Tic Tac Toe] Would you like a rematch? [Y/N]: 
+ ___ ___ ___
+| 0 | 1 | 2 |
+|___|___|___|
+| 3 | 4 | 5 |
+|___|___|___|
+| 6 | 7 | 8 |
+|___|___|___|
+
+[Tic Tac Toe] Select your move (m): [Tic Tac Toe] Executing command "stop"...
+
+[Dollar-Store GameCube] Game Selection:
+[Dollar-Store GameCube] 0. Tic Tac Toe | Version: 1.0.0
+
+[Dollar-Store GameCube] Select a game: [Dollar-Store GameCube] Executing command "stop"...
+[Dollar-Store GameCube] Shutting down.
